@@ -13,7 +13,7 @@
   "onboarding": false,
   "requireConfig": "optional",
   "gitAuthor": "Doug Piranha <98128395+doug-piranha-bot[bot]@users.noreply.github.com>",
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "dependencyDashboardTitle": "Renovate Dashboard 🐟",
   "suppressNotifications": ["prIgnoreNotification"],
   "commitBodyTable": true,
   "packageRules": [
