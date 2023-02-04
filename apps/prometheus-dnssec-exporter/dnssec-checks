@@ -1,0 +1,4 @@
+[[records]]
+  zone = "ietf.org"
+  record = "@"
+  type = "SOA"
