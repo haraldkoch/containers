@@ -8,7 +8,7 @@
     ":automergeDigest"
   ],
   "platform": "github",
-  "username": "Doug Piranha [bot]",
+  "username": "doug-piranha-bot[bot]",
   "repositories": ["haraldkoch/containers"],
   "onboarding": false,
   "requireConfig": "optional",
