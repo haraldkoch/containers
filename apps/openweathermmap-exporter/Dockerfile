@@ -1,5 +1,5 @@
 ARG VERSION
-FROM public.ecr.aws/docker/library/alpine:3.17 as builder
+FROM public.ecr.aws/docker/library/alpine:3.18 as builder
 ARG VERSION
 ARG TARGETOS
 ARG TARGETARCH
@@ -16,7 +16,7 @@ ENV PATH $GOPATH/bin:$PATH
 RUN \
     apk add --no-cache git go upx \
     && go install -ldflags="-s -w" "github.com/haraldkoch/openweathermap-exporter@v${VERSION}" \
-    && upx --ultra-brute /go/bin/openweathermap-exporter
+    && upx /go/bin/openweathermap-exporter
 
 FROM ghcr.io/haraldkoch/alpine:rolling@sha256:f8b4a0dd65db5971a38ebfc5ec31f1132269b8bde43870d08477c0f39ee5a01d
 
