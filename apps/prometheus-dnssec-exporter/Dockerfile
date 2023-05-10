@@ -1,3 +1,4 @@
+#
 ARG VERSION
 FROM public.ecr.aws/docker/library/alpine:3.18 as builder
 ARG VERSION
