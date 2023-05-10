@@ -18,7 +18,7 @@ RUN \
     && go install -ldflags="-s -w" "github.com/haraldkoch/prometheus-dnssec-exporter@v${VERSION}" \
     && upx /go/bin/prometheus-dnssec-exporter
 
-FROM ghcr.io/haraldkoch/alpine:rolling@sha256:f8b4a0dd65db5971a38ebfc5ec31f1132269b8bde43870d08477c0f39ee5a01d
+FROM ghcr.io/haraldkoch/alpine:rolling@sha256:5ea23742f1330ec18aa3b59d95098a18ec13844b84d80b2b941287af4f6ce7c9
 
 ARG TARGETPLATFORM
 ARG VERSION
