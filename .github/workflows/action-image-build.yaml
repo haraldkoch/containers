@@ -49,6 +49,15 @@ jobs:
           echo 'pushImages=${{ inputs.pushImages }}'
           echo 'sendNotification=${{ inputs.sendNotification }}'
 
+      - name: Setup CUE
+        uses: cue-lang/setup-cue@0be332bb74c8a2f07821389447ba3163e2da3bfb
+
+      - name: Validate Image Metadata
+        shell: bash
+        # 'xargs' rather than 'find -exec' so we can capture the status code
+        run: |
+          find ./apps/ -name metadata.json | xargs -I {} cue vet --schema '#Spec' {} ./metadata.rules.cue
+
       - name: Generate Matrices
         id: generate-matrices
         run: |
@@ -87,9 +96,6 @@ jobs:
       - name: Setup Tools
         shell: bash
         run: sudo apt-get install -y moreutils jo
-
-      - name: Setup CUE
-        uses: cue-lang/setup-cue@0be332bb74c8a2f07821389447ba3163e2da3bfb
 
       - name: Setup Goss
         if: ${{ matrix.image.chan_tests_enabled }}
@@ -149,13 +155,7 @@ jobs:
         run: |
           mkdir -p /tmp/${{ matrix.image.chan_image_name }}/digests
           digest="${{ steps.build.outputs.digest }}"
-          touch "/tmp/${{ matrix.image.chan_image_name }}/digests/${digest#sha256:}"
-
-      - name: Set Failed Bit
-        if: ${{ always() && steps.dgoss.outcome == 'failed' || steps.build.outcome != 'success' }}
-        run: |
-          mkdir -p /tmp/${{ matrix.image.chan_image_name }}
-          touch "/tmp/${{ matrix.image.chan_image_name }}/failed"
+          echo "${{ matrix.image.platform }}" > "/tmp/${{ matrix.image.chan_image_name }}/digests/${digest#sha256:}"
 
       - name: Upload Digest
         if: ${{ inputs.pushImages == 'true' }}
@@ -186,10 +186,20 @@ jobs:
           name: ${{ matrix.manifest.image }}
           path: /tmp/${{ matrix.manifest.image }}
 
-      - name: Test Failed Bit
-        id: failure-test
-        run:
-          test -f "/tmp/${{ matrix.manifest.image }}/failed" && exit 1 || exit 0
+      - name: Ensure all platforms were built
+        id: ensure-platforms
+        run: |
+            EXPECTED_COUNT=$(cat << EOF | jq ". | length"
+            ${{ toJSON(matrix.manifest.platforms) }}
+            EOF
+            )
+            ACTUAL_COUNT=$(ls -1 /tmp/${{ matrix.manifest.image }}/digests | wc -l)
+            if [[ $EXPECTED_COUNT != $ACTUAL_COUNT ]]; then
+                echo "Expected $EXPECTED_COUNT platforms, but only found $ACTUAL_COUNT"
+                echo "Expected: ${{ toJSON(matrix.manifest.platforms) }}"
+                echo "Actual: $(cat /tmp/${{ matrix.manifest.image }}/digests/*)"
+                exit 1
+            fi
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -207,6 +217,7 @@ jobs:
           ls -la
           cat *
 
+      # https://docs.docker.com/build/ci/github-actions/multi-platform/#distribute-build-across-multiple-runners
       - name: Merge Manifests
         id: merge
         working-directory: /tmp/${{ matrix.manifest.image }}/digests
@@ -215,6 +226,10 @@ jobs:
         run: |
           docker buildx imagetools create $(jq -cr '. | map("-t ghcr.io/${{ github.repository_owner }}/" + .) | join(" ")'  <<< "$TAGS") \
               $(printf 'ghcr.io/${{ github.repository_owner }}/${{ matrix.manifest.image }}@sha256:%s ' *)
+
+      - name: Inspect image
+        run: |
+          docker buildx imagetools inspect ghcr.io/${{ github.repository_owner }}/${{ matrix.manifest.image }}:${{ matrix.manifest.version }}
 
       - name: Build successful
         id: build-success
