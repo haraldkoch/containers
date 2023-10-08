@@ -17,15 +17,15 @@ concurrency:
 jobs:
   # Pin to main to prevent accidental injection of malicious code
   simple-checks:
-    uses: .github/workflows/simple-checks.yaml
+    uses: haraldkoch/containers/.github/workflows/simple-checks.yaml@reorg
 
   get-changed-images:
-    uses: .github/workflows/get-changed-images.yaml
+    uses: haraldkoch/containers/.github/workflows/get-changed-images.yaml@reorg
 
   build-images:
     needs: [simple-checks, get-changed-images]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: .github/workflows/build-images.yaml
+    uses: haraldkoch/containers/.github/workflows/build-images.yaml@reorg
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
