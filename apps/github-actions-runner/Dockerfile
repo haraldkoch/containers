@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/runtime-deps:7.0-jammy@sha256:de9b48cb9ccd30b983bbd49f49a22aa7daf265b639f364de77e0fd7041646e9f
+FROM mcr.microsoft.com/dotnet/runtime-deps:8.0-jammy@sha256:85f2527be1c79cbdd9a920130f903e5001eb2679349f9a6a48b2429db527e6db
 
 ARG VERSION
 # renovate: datasource=github-releases depName=actions/runner-container-hooks
-ARG RUNNER_CONTAINER_HOOKS_VERSION=0.3.2
-ARG DOCKER_VERSION=20.10.23
+ARG RUNNER_CONTAINER_HOOKS_VERSION=0.4.0
+ARG DOCKER_VERSION=24.0.6
 
 ARG TARGETOS
 ARG TARGETARCH
