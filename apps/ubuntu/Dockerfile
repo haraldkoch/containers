@@ -70,6 +70,7 @@ RUN \
         jq \
         locales \
         moreutils \
+        openssh-client \
         pv \
         tini \
         tzdata \
