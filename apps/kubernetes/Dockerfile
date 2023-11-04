@@ -1,4 +1,4 @@
-FROM ghcr.io/haraldkoch/alpine:rolling@sha256:f66a9c44367a411465953d6cabb4e4a11df119799c6528739956f5554cef99d8
+FROM ghcr.io/haraldkoch/alpine:rolling@sha256:38fdc5c23295f389bea86278d1888b7f19a13b6875e9c112a557f3099a3dd1c0
 
 ARG TARGETPLATFORM
 ARG VERSION
