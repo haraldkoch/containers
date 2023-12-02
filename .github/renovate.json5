@@ -1,20 +1,21 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     "docker:enableMajor",
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":semanticCommits",
-    ":automergeDigest"
+    ":automergeDigest",
+    ":automergeBranch",
+    "helpers:pinGitHubActionDigests"
   ],
   "platform": "github",
-  "username": "doug-piranha-bot[bot]",
+  "platformCommit": true,
   "onboarding": false,
   "requireConfig": "optional",
-  "gitAuthor": "Doug Piranha <98128395+doug-piranha-bot[bot]@users.noreply.github.com>",
   "dependencyDashboardTitle": "Renovate Dashboard 🐟",
   "suppressNotifications": ["prIgnoreNotification"],
-  "commitBodyTable": true,
   "packageRules": [
     {
       "description": "Auto-merge Github Actions",
