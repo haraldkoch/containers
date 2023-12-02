@@ -32,6 +32,7 @@ jobs:
     uses: haraldkoch/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
     permissions:
+      contents: read
       packages: write
     with:
       appsToBuild: ${{ inputs.appsToBuild }}

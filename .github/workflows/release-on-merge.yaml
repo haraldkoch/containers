@@ -17,6 +17,7 @@ on:
 
 jobs:
   simple-checks:
+    name: Simple Checks
     uses: haraldkoch/containers/.github/workflows/simple-checks.yaml@main
 
   get-changed-images:
@@ -24,10 +25,14 @@ jobs:
     uses: haraldkoch/containers/.github/workflows/get-changed-images.yaml@main
 
   build-images:
+    name: Build Images
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
     uses: haraldkoch/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
+    permissions:
+      contents: read
+      packages: write
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
       pushImages: true
