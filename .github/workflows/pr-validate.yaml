@@ -3,19 +3,14 @@ name: "Pull Request: Validate"
 
 on:
   pull_request:
-    branches:
-      - main
-    types:
-      - opened
-      - synchronize
-      - reopened
+    branches: ["main"]
+    types: ["opened", "synchronize", "reopened"]
 
 concurrency:
   group: ${{ github.head_ref }}-pr-validate
   cancel-in-progress: true
 
 jobs:
-  # Pin to main to prevent accidental injection of malicious code
   simple-checks:
     uses: haraldkoch/containers/.github/workflows/simple-checks.yaml@main
 
@@ -23,7 +18,7 @@ jobs:
     uses: haraldkoch/containers/.github/workflows/get-changed-images.yaml@main
 
   build-images:
-    needs: [simple-checks, get-changed-images]
+    needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
     uses: haraldkoch/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
