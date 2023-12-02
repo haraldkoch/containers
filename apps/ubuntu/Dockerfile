@@ -63,6 +63,7 @@ RUN \
     apt-get install -y \
         bash \
         ca-certificates \
+        coreutils \
         curl \
         dnsutils \
         iputils-ping \
@@ -70,7 +71,6 @@ RUN \
         jq \
         locales \
         moreutils \
-        openssh-client \
         pv \
         tini \
         tzdata \
