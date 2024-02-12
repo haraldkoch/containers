@@ -339,14 +339,78 @@ jobs:
           color: ${{ steps.build-failed.outputs.color || steps.build-success.outputs.color }}
           username: GitHub Actions
 
+  push_to_local:
+    name: Push images to local container registry
+    runs-on: arc-runner-set-kochhaus-home
+    needs: ["prepare", "build-platform-images"]
+    if: ${{ always() && inputs.pushImages && toJSON(fromJSON(needs.prepare.outputs.matrices).images) != '[]' && toJSON(fromJSON(needs.prepare.outputs.matrices).images) != '' }}
+    strategy:
+      matrix:
+        image: ["${{ fromJSON(needs.prepare.outputs.matrices).images }}"]
+      fail-fast: false
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Setup Tools
+        shell: bash
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install --no-install-recommends -y jq
+
+      - name: Lowercase repository owner
+        shell: bash
+        run: echo "LOWERCASE_REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
+      - name: Download Digests
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.image.name }}
+          path: /tmp/${{ matrix.image.name }}
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: "${{ github.actor }}"
+          password: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Login to Local Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.HARBOR_REGISTRY }}
+          username: ${{ secrets.HARBOR_USER }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
+
+      - name: Push to Local Registry
+        id: push
+        working-directory: /tmp/${{ matrix.image.name }}/digests
+        run: |
+          digest=$(printf '%s' *)
+          docker buildx imagetools create -t ${{ secrets.HARBOR_REGISTRY }}/${{ secrets.HARBOR_PROJECT }}/${{matrix.image.name}}@sha256:${digest} \
+              ghcr.io/${{ env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}@sha256:${digest}
+
+      - name: Merge Manifests - local registry
+        id: merge-local
+        working-directory: /tmp/${{ matrix.image.name }}/digests
+        env:
+          TAGS: ${{ toJSON(matrix.image.tags) }}
+        shell: bash
+        run: |
+          docker buildx imagetools create $(jq -cr '. | map("-t ${{ secrets.HARBOR_REGISTRY }}/${{ secrets.HARBOR_PROJECT }}/${{matrix.image.name}}:" + .) | join(" ")'  <<< "$TAGS") \
+              $(printf 'ghcr.io/${{ env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}@sha256:%s ' *)
+
   # Summarize matrix https://github.community/t/status-check-for-a-matrix-jobs/127354/7
   build_success:
     name: Build matrix success
     runs-on: ubuntu-latest
-    needs: ["prepare", "merge"]
+    needs: ["prepare", "merge", "push_to_local"]
     if: ${{ always() }}
     steps:
       - name: Check build matrix status
-        if: ${{ (inputs.appsToBuild != '' && inputs.appsToBuild != '[]') && (needs.merge.result != 'success' && needs.merge.result != 'skipped' && needs.prepare.result != 'success') }}
+        if: ${{ (inputs.appsToBuild != '' && inputs.appsToBuild != '[]') && (needs.push_to_local.result != 'success' && needs.push_to_local.result != 'skipped' && needs.merge.result != 'success' && needs.merge.result != 'skipped' && needs.prepare.result != 'success') }}
         shell: bash
         run: exit 1
