@@ -18,7 +18,7 @@ RUN \
     && go install -ldflags="-s -w" "github.com/haraldkoch/openweathermap-exporter@v${VERSION}" \
     && upx /go/bin/openweathermap-exporter
 
-FROM ghcr.io/haraldkoch/alpine:rolling@sha256:5f56000fa567382026820264d680593263180fb52a26db7c0d7f5060e3c3f754
+FROM ghcr.io/haraldkoch/alpine:rolling@sha256:58688e0e653bdf3aa6d854a1849545ba6a8b484ebe268001e8fed4b8abff2ff8
 
 ARG TARGETPLATFORM
 ARG VERSION
