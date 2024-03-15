@@ -7,8 +7,6 @@
     ":disableRateLimiting",
     ":semanticCommits"
   ],
-  "onboarding": false,
-  "requireConfig": "optional",
   "dependencyDashboardTitle": "Renovate Dashboard 🐟",
   "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"]
 }
