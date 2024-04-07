@@ -15,6 +15,6 @@ RUN wget "https://github.com/prometheus-community/smartctl_exporter/releases/dow
 
 EXPOSE 9633
 USER nobody
-CMD [ "/bin/smartctl_exporter" ]
+ENTRYPOINT [ "/bin/smartctl_exporter" ]
 
 LABEL org.opencontainers.image.source="https://github.com/prometheus-community/smartctl_exporter"
