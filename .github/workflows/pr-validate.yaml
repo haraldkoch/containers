@@ -13,10 +13,10 @@ concurrency:
 
 jobs:
   simple-checks:
-    uses: haraldkoch/containers/.github/workflows/simple-checks.yaml@main
+    uses: haraldkoch/containers/.github/workflows/simple-checks.yaml@no-more-bases
 
   get-changed-images:
-    uses: haraldkoch/containers/.github/workflows/get-changed-images.yaml@main
+    uses: haraldkoch/containers/.github/workflows/get-changed-images.yaml@no-more-bases
 
   build-images:
     needs: ["simple-checks", "get-changed-images"]
