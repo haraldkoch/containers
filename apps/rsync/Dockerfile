@@ -7,6 +7,6 @@ ARG CHANNEL
 RUN apk add --no-cache bash ca-certificates catatonit openssh rsync~"${VERSION}"
 
 ENTRYPOINT ["/usr/bin/catatonit", "--"]
-CMD ["/app/rsync"]
+CMD ["/usr/bin/rsync"]
 
 LABEL org.opencontainers.image.source="https://github.com/WayneD/rsync"
