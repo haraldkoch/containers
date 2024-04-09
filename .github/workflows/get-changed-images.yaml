@@ -35,13 +35,13 @@ jobs:
           json: true
           escape_json: false
 
-      - if: ${{ steps.changed-files.outputs.all_changed_and_count > 0 }}
+      - if: ${{ steps.changed-files.outputs.all_changed_and_modified_files_count > 0 }}
         name: Determine changed images
         id: changed-containers
         shell: bash
         run: |
           IMAGES=$( \
-              echo '${{ steps.changed-files.outputs.all_changed_files }}' \
+              echo '${{ steps.changed-files.outputs.all_changed_and_modified_files }}' \
                   | jq --raw-output 'map(sub("^apps/"; "")) | join(",")' \
           )
           echo "addedOrModifiedImages=${IMAGES}" >> $GITHUB_OUTPUT
