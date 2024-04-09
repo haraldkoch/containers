@@ -13,6 +13,7 @@ RUN \
         bash \
         ca-certificates \
         catatonit \
+        curl \
         openssl
 
 #hadolint ignore=DL3018,DL3059
