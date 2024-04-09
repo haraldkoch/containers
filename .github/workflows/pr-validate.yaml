@@ -13,15 +13,15 @@ concurrency:
 
 jobs:
   simple-checks:
-    uses: haraldkoch/containers/.github/workflows/simple-checks.yaml@main
+    uses: haraldkoch/containers/.github/workflows/simple-checks.yaml@no-more-bases
 
   get-changed-images:
-    uses: haraldkoch/containers/.github/workflows/get-changed-images.yaml@main
+    uses: haraldkoch/containers/.github/workflows/get-changed-images.yaml@no-more-bases
 
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: haraldkoch/containers/.github/workflows/build-images.yaml@main
+    uses: haraldkoch/containers/.github/workflows/build-images.yaml@no-more-bases
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"

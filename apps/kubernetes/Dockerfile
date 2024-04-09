@@ -1,19 +1,28 @@
-FROM ghcr.io/haraldkoch/alpine:rolling@sha256:e0575093e874528ec64354c0a8e8a84d757699d01fa6aa05c1d72912d2e1f685
+FROM docker.io/library/alpine:3.19
 
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
 ARG TARGETARCH
-ENV TARGETARCH=${TARGETARCH:-amd64}
+
+USER root
+WORKDIR /app
 
 #hadolint ignore=DL3018
-RUN apk add --no-cache ca-certificates openssl
+RUN \
+    apk add --no-cache \
+        bash \
+        ca-certificates \
+        catatonit \
+        curl \
+        openssl
+
 #hadolint ignore=DL3018,DL3059
 RUN \
     curl -fsSL -o /usr/local/bin/kubectl "https://dl.k8s.io/release/v${VERSION}/bin/linux/${TARGETARCH}/kubectl" \
     && chmod +x /usr/local/bin/kubectl
 
-USER kah
+ENTRYPOINT ["/usr/bin/catatonit", "--"]
 CMD [ "/usr/local/bin/kubectl" ]
 
 LABEL org.opencontainers.image.source="https://github.com/kubernetes/kubectl"
