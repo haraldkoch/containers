@@ -1,17 +1,14 @@
 ---
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#process
+# yaml-language-server: $schema=https://raw.githubusercontent.com/goss-org/goss/master/docs/schema.yaml
 process:
   # wut
   prometheus-dnss:
     running: true
 
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#port
 port:
-  # https://github.com/aelsabbahy/goss/issues/149
   tcp6:9204:
     listening: true
 
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#http
 http:
   http://localhost:9204/metrics:
     status: 200
