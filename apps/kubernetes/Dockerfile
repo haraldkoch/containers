@@ -14,6 +14,7 @@ RUN \
         bash \
         ca-certificates \
         catatonit \
+        coreutils \
         curl \
         openssl
 
