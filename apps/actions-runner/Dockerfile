@@ -24,6 +24,7 @@ RUN \
         unrar \
         unzip \
         wget \
+        yq \
         zip \
     && rm -rf /var/lib/apt/lists/*
 
