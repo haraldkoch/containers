@@ -27,6 +27,9 @@ RUN \
         zip \
     && rm -rf /var/lib/apt/lists/*
 
+COPY --from=ghcr.io/fluxcd/flux-cli:v2.3.0 /usr/local/bin/flux /usr/local/bin/flux
+COPY --from=registry.k8s.io/kubectl:v1.30.1 /bin/kubectl /usr/local/bin/kubectl
+
 USER runner
 
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
