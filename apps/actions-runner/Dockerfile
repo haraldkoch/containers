@@ -24,12 +24,12 @@ RUN \
         unrar \
         unzip \
         wget \
-        yq \
         zip \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=ghcr.io/fluxcd/flux-cli:v2.3.0 /usr/local/bin/flux /usr/local/bin/flux
 COPY --from=registry.k8s.io/kubectl:v1.30.1 /bin/kubectl /usr/local/bin/kubectl
+COPY --from=docker.io/mikefarah/yq:4.44.1 /usr/bin/yq /usr/local/bin/yq
 
 USER runner
 
