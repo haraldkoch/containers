@@ -1,5 +1,5 @@
 ARG VERSION
-FROM docker.io/library/golang:1.22-alpine as dnssec-exporter
+FROM docker.io/library/golang:1.23-alpine as dnssec-exporter
 ARG VERSION
 ARG TARGETOS
 ARG TARGETARCH
