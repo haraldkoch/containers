@@ -14,6 +14,8 @@ on:
   push:
     paths:
       - ".github/workflows/docker-cleanup.yaml"
+  schedule:
+    - cron: "0 4 * * 1"
   workflow_dispatch:
 
 concurrency:
@@ -28,7 +30,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - primary-name: "actions-runner"
+          - primary-name: "dmarc-report"
+          - primary-name: "kubernetes"
+          - primary-name: "openweathermap-exporter"
           - primary-name: "postgres-init"
+          - primary-name: "prometheus-dnssec-exporter"
+          - primary-name: "rsync"
+          - primary-name: "smartctl_exporter"
+          - primary-name: "volsync"
     env:
       # Requires a personal access token with the OAuth scope delete:packages
       TOKEN: ${{ secrets.PACKAGE_DELETE_TOKEN }}
