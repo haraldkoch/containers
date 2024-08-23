@@ -30,13 +30,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - primary-name: "actions-runner"
-          - primary-name: "dmarc-report"
-          - primary-name: "kubernetes"
-          - primary-name: "openweathermap-exporter"
+          - primary-name: "onepassword-sync"
+          - primary-name: "onepassword-connect-api"
           - primary-name: "postgres-init"
           - primary-name: "prometheus-dnssec-exporter"
           - primary-name: "rsync"
+          - primary-name: "kubernetes-kubectl"
+          - primary-name: "openweathermap-exporter"
+          - primary-name: "openweathermap_exporter"
+          - primary-name: "weather_exporter"
+          - primary-name: "actions-runner"
           - primary-name: "smartctl_exporter"
           - primary-name: "volsync"
     env:
