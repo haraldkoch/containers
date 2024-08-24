@@ -1,6 +1,5 @@
 ---
 app: ubuntu
-base: true
 channels:
   - name: noble
     platforms: ["linux/amd64", "linux/arm64"]
