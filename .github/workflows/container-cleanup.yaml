@@ -25,7 +25,7 @@ concurrency:
 jobs:
   cleanup-untagged-images:
     name: Cleanup Untagged Images Tags for ${{ matrix.primary-name }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
