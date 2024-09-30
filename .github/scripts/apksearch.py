@@ -8,7 +8,7 @@ import tarfile
 import requests
 
 
-def get_latest_version(
+def apksearch(
     package_name: str, repo: str = "v3.20/main", arch: str = "x86_64"
 ) -> str | None:
     """

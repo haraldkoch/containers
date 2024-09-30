@@ -2,8 +2,8 @@ import sys
 import os
 sys.path.append(os.path.abspath(".github/scripts"))
 
-from apksearch import get_latest_version
+from apksearch import apksearch
 
 if __name__ == "__main__":
-    version = get_latest_version("rsync")
+    version = apksearch("rsync")
     print(f"{version}")
