@@ -9,7 +9,7 @@ import requests
 
 
 def get_latest_version(
-    package_name: str, repo: str = "v3.19/main", arch: str = "x86_64"
+    package_name: str, repo: str = "v3.20/main", arch: str = "x86_64"
 ) -> str | None:
     """
     Fetches the latest version of a package from the specified Alpine repository.
