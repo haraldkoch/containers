@@ -6,7 +6,6 @@ ARG CHANNEL
 #hadolint ignore=DL3018
 RUN apk add --no-cache bash ca-certificates catatonit openssh rsync~"${VERSION}"
 
-ENTRYPOINT ["/usr/bin/catatonit", "--"]
-CMD ["/usr/bin/rsync"]
+ENTRYPOINT ["/usr/bin/catatonit", "--", "/usr/bin/rsync"]
 
 LABEL org.opencontainers.image.source="https://github.com/WayneD/rsync"

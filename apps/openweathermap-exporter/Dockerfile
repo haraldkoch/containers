@@ -25,7 +25,6 @@ RUN \
 COPY --from=openweathermap-exporter /go/bin/openweathermap-exporter /app/openweathermap-exporter
 
 EXPOSE 2112
-ENTRYPOINT ["/usr/bin/catatonit", "--"]
-CMD ["/app/openweathermap-exporter"]
+ENTRYPOINT ["/usr/bin/catatonit", "--", "/app/openweathermap-exporter"]
 
 LABEL org.opencontainers.image.source="https://github.com/haraldkoch/openweathermap-exporter"
