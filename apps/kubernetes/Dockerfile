@@ -23,7 +23,6 @@ RUN \
     curl -fsSL -o /usr/local/bin/kubectl "https://dl.k8s.io/release/v${VERSION}/bin/linux/${TARGETARCH}/kubectl" \
     && chmod +x /usr/local/bin/kubectl
 
-ENTRYPOINT ["/usr/bin/catatonit", "--"]
-CMD [ "/usr/local/bin/kubectl" ]
+ENTRYPOINT ["/usr/bin/catatonit", "--", "/usr/local/bin/kubectl"]
 
 LABEL org.opencontainers.image.source="https://github.com/kubernetes/kubectl"

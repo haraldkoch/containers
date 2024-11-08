@@ -28,7 +28,6 @@ COPY --from=dnssec-exporter /go/bin/prometheus-dnssec-exporter /app/prometheus-d
 COPY ./apps/prometheus-dnssec-exporter/dnssec-checks /etc/dnssec-checks
 
 EXPOSE 9204
-ENTRYPOINT ["/usr/bin/catatonit", "--"]
-CMD ["/app/prometheus-dnssec-exporter"]
+ENTRYPOINT ["/usr/bin/catatonit", "--", "/app/prometheus-dnssec-exporter"]
 
 LABEL org.opencontainers.image.source="https://github.com/haraldkoch/prometheus-dnssec-exporter"
