@@ -11,7 +11,7 @@ ENV CGO_ENABLED=0 \
     GOARM=${TARGETVARIANT}
 RUN go install -ldflags="-s -w" "github.com/haraldkoch/prometheus-dnssec-exporter@v${VERSION}"
 
-FROM docker.io/library/alpine:3.20.3
+FROM docker.io/library/alpine:3.21.0
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
