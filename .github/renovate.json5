@@ -3,13 +3,9 @@
   "extends": [
     "config:recommended",
     "docker:enableMajor",
-    ":dependencyDashboard",
-    ":disableRateLimiting",
-    ":timezone(America/Toronto)",
-    ":semanticCommits"
+    "security:openssf-scorecard",
+    "github>haraldkoch/renovate-config",
   ],
-  "dependencyDashboardTitle": "Renovate Dashboard 🐟",
-  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
   "packageRules": [
     {
       "addLabels": ["renovate/container", "type/major"],
