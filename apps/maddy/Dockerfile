@@ -20,7 +20,7 @@ RUN \
     && cp maddy.conf.docker /pkg/data/maddy.conf \
     && ./build.sh --builddir /tmp --destdir /pkg/ build install
 
-FROM docker.io/library/alpine:3.21.2
+FROM docker.io/library/alpine:3.21.3
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
