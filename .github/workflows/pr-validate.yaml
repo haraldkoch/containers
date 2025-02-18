@@ -21,7 +21,7 @@ jobs:
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: haraldkoch/containers/.github/workflows/build-images.yaml@main
+    uses: haraldkoch/containers/.github/workflows/build-images.yaml@multi-arch
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
