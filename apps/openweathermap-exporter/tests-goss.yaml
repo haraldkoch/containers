@@ -1,17 +1,15 @@
 ---
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#process
+# activate these tests once we modify the exporter to start even without an API key
 process:
   # wut - 15 characters?
   openweathermap-:
     running: true
 
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#port
 port:
   # https://github.com/aelsabbahy/goss/issues/149
   tcp6:2112:
     listening: true
 
-# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#http
 http:
   http://localhost:2112/metrics:
     status: 200

@@ -1,10 +1,4 @@
 ---
-app: openweathermap-exporter
-semver: true
-channels:
-  - name: stable
-    platforms: ["linux/amd64", "linux/arm64"]
-    stable: true
-    tests:
-      enabled: false
-      type: web
+# renovate datasource=github-releases depName=haraldkoch/openweathermap-exporter
+version: 0.2.24
+name: openweathermap-exporter
