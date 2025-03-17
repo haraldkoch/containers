@@ -1,9 +1,4 @@
 ---
-app: ubuntu
-channels:
-  - name: noble
-    platforms: ["linux/amd64", "linux/arm64"]
-    stable: true
-    tests:
-      enabled: true
-      type: cli
+# renovate datasource=docker depName=library/ubuntu versioning=loose
+version: noble-20250127
+name: ubuntu

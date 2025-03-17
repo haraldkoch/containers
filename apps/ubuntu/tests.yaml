@@ -1,0 +1,14 @@
+schemaVersion: "2.0.0"
+fileExistenceTests:
+  - name: greeting.sh
+    path: /scripts/greeting.sh
+    shouldExist: true
+  - name: umask
+    path: scripts/umask.sh
+    shouldExist: true
+  - name: vpn.sh
+    path: /scripts/vpn.sh
+    shouldExist: true
+  - name: envsubst
+    path: /usr/local/bin/envsubst
+    shouldExist: true
