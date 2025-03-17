@@ -1,9 +1,7 @@
-FROM docker.io/library/alpine:3.21
+FROM docker.io/library/alpine:3.21.3
 
-ARG TARGETPLATFORM
-ARG VERSION
-ARG CHANNEL
 ARG TARGETARCH
+ARG VERSION
 
 USER root
 WORKDIR /app
@@ -20,7 +18,7 @@ RUN \
 
 #hadolint ignore=DL3018,DL3059
 RUN \
-    curl -fsSL -o /usr/local/bin/kubectl "https://dl.k8s.io/release/v${VERSION}/bin/linux/${TARGETARCH}/kubectl" \
+    curl -fsSL -o /usr/local/bin/kubectl "https://dl.k8s.io/release/${VERSION}/bin/linux/${TARGETARCH}/kubectl" \
     && chmod +x /usr/local/bin/kubectl
 
 ENTRYPOINT ["/usr/bin/catatonit", "--", "/usr/local/bin/kubectl"]
