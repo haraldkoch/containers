@@ -1,10 +1,4 @@
 ---
-app: prometheus-dnssec-exporter
-semver: true
-channels:
-  - name: stable
-    platforms: ["linux/amd64", "linux/arm64"]
-    stable: true
-    tests:
-      enabled: true
-      type: web
+# renovate datasource=github-releases depName=haraldkoch/prometheus-dnssec-exporter
+version: 0.6.0
+name: prometheus-dnssec-exporter
