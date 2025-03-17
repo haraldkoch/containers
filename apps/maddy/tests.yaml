@@ -1,0 +1,11 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/goss-org/goss/master/docs/schema.yaml
+process:
+  maddy:
+    running: true
+port:
+  tcp6:25:
+    listening: true
+file:
+  /bin/maddy:
+    exists: true
