@@ -1,10 +1,4 @@
 ---
-app: rsync
-semver: true
-channels:
-  - name: stable
-    platforms: ["linux/amd64", "linux/arm64"]
-    stable: true
-    tests:
-      enabled: false
-      type: cli
+# renovate: datasource=repology depName=alpine_3_21/rsync
+version: 3.4.0
+name: rsync
