@@ -26,22 +26,33 @@ jobs:
   cleanup-untagged-images:
     name: Cleanup Untagged Images Tags for ${{ matrix.primary-name }}
     runs-on: ubuntu-24.04
+    permissions:
+      packages: read
     strategy:
       fail-fast: false
       matrix:
         include:
-          - primary-name: "onepassword-sync"
+          - primary-name: "actions-runner"
+          - primary-name: "cloudflared"
+          - primary-name: "excalidraw"
+          - primary-name: "filebrowser"
+          - primary-name: "goldpinger"
+          - primary-name: "kubectl"
+          - primary-name: "kubernetes-kubectl"
+          - primary-name: "maddy"
           - primary-name: "onepassword-connect-api"
+          - primary-name: "onepassword-sync"
+          - primary-name: "openweathermap-exporter"
+          - primary-name: "openweathermap_exporter"
           - primary-name: "postgres-init"
           - primary-name: "prometheus-dnssec-exporter"
           - primary-name: "rsync"
-          - primary-name: "kubernetes-kubectl"
-          - primary-name: "openweathermap-exporter"
-          - primary-name: "openweathermap_exporter"
-          - primary-name: "weather_exporter"
-          - primary-name: "actions-runner"
           - primary-name: "smartctl_exporter"
+          - primary-name: "syncthing"
+          - primary-name: "ubuntu"
           - primary-name: "volsync"
+          - primary-name: "weather_exporter"
+          - primary-name: "x509-certificate-exporter"
     env:
       # Requires a personal access token with the OAuth scope delete:packages
       TOKEN: ${{ secrets.PACKAGE_DELETE_TOKEN }}
