@@ -24,6 +24,8 @@ jobs:
   pre-job:
     name: Pre-Job
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       any_changed: ${{ steps.changed-dirs.outputs.any_changed }}
       all_changed_and_modified_files: ${{ steps.changed-dirs.outputs.all_changed_and_modified_files }}
@@ -44,6 +46,8 @@ jobs:
     needs: pre-job
     name: Get Changed Apps
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       apps: ${{ steps.apps.outputs.apps }}
     steps:
@@ -113,6 +117,7 @@ jobs:
     needs: build
     name: Build Success
     runs-on: ubuntu-latest
+    permissions: {}
     steps:
       - name: Any jobs failed?
         if: ${{ contains(needs.*.result, 'failure') }}
