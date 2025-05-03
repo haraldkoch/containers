@@ -14,7 +14,7 @@ This container support setting certain custom enviroment variables with the use 
 | REPORT_DB_PASS              | "password"                           |
 | PARSER_IMAP_SERVER          | "imap.example.com"                   |
 | PARSER_IMAP_PORT            | "143"                                |
-| PARSER_IMAP_USER            | "user@example.com"                   |
+| PARSER_IMAP_USER            | "<user@example.com>"                 |
 | PARSER_IMAP_PASS            | "imap_password"                      |
 | PARSER_IMAP_READ_FOLDER     | "Inbox"                              |
 | PARSER_IMAP_MOVE_FOLDER     | "processed"                          |
