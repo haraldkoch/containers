@@ -1,0 +1,4 @@
+---
+# renovate datasource=docker depName=gutmensch/dmarc-report
+version: 1.4.5
+name: dmarc-report
