@@ -1,0 +1,1 @@
+15 * * * * /usr/bin/dmarcts-report-parser.pl -i -d -r 1>>/config/dmarc-reports.log 2>&1
