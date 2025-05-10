@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=haraldkoch/openweathermap-exporter
-  version = "0.2.24"
+  default = "0.2.24"
 }
 
 variable "SOURCE" {

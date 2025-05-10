@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=foxcpp/maddy
-  version = "0.8.1"
+  default = "0.8.1"
 }
 
 variable "SOURCE" {

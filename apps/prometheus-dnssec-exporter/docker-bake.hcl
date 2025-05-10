@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=haraldkoch/prometheus-dnssec-exporter
-  version = "0.6.0"
+  default = "0.6.0"
 }
 
 variable "SOURCE" {

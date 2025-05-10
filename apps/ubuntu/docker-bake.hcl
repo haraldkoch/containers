@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=docker depName=library/ubuntu versioning=loose
-  version = "noble-20250127"
+  default = "noble-20250127"
 }
 
 variable "SOURCE" {

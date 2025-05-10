@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=docker depName=gutmensch/dmarc-report
-  version = "1.4.5"
+  default = "1.4.5"
 }
 
 variable "SOURCE" {

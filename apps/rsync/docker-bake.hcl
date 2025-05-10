@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=repology depName=alpine_3_21/rsync
-  version = "3.4.0"
+  default = "3.4.0"
 }
 
 variable "SOURCE" {
