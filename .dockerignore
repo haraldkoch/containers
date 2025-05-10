@@ -3,5 +3,6 @@
 # that are needed in the build process.
 /*
 !defaults/
+!resources/
 !scripts/
 !entrypoint.sh

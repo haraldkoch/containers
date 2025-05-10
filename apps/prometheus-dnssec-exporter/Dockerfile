@@ -15,7 +15,7 @@ RUN \
 COPY --from=builder /go/bin/prometheus-dnssec-exporter /app/prometheus-dnssec-exporter
 
 # this hack is required for testing; the container will not start without a configuration file.
-COPY ./dnssec-checks /etc/dnssec-checks
+COPY ./resources/dnssec-checks /etc/dnssec-checks
 
 EXPOSE 9204
 ENTRYPOINT ["/usr/bin/catatonit", "--", "/app/prometheus-dnssec-exporter"]
