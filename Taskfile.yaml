@@ -11,10 +11,13 @@ tasks:
     cmd: task --list
     silent: true
 
-  publish:
-    desc: Publish an app [APP=required]
-    cmd: gh workflow run release.yaml -f app={{.APP}} -f release=true
+  build-*:
+    desc: Build an app [RELEASE=true]
+    cmd: gh workflow run release.yaml -f app={{.APP}} -f release={{.RELEASE}}
+    vars:
+      APP: '{{index .MATCH 0}}'
+      RELEASE: '{{.RELEASE | default "true"}}'
     preconditions:
       - gh auth status
-      - test -f {{.ROOT_DIR}}/.github/workflows/renovate.yaml
+      - test -f {{.ROOT_DIR}}/.github/workflows/release.yaml
       - which gh
