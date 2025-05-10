@@ -1,4 +1,0 @@
----
-# renovate datasource=github-releases depName=haraldkoch/openweathermap-exporter
-version: 0.2.24
-name: openweathermap-exporter
