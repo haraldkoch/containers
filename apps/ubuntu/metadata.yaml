@@ -1,4 +1,0 @@
----
-# renovate datasource=docker depName=library/ubuntu versioning=loose
-version: noble-20250127
-name: ubuntu
