@@ -1,14 +1,6 @@
-ARG VERSION
 FROM docker.io/library/golang:1.24-alpine AS builder
 ARG VERSION
-ARG TARGETOS
-ARG TARGETARCH
-ARG TARGETVARIANT=""
-ARG TARGETPLATFORM
-ENV CGO_ENABLED=0 \
-    GOOS=${TARGETOS} \
-    GOARCH=${TARGETARCH} \
-    GOARM=${TARGETVARIANT}
+ENV CGO_ENABLED=0
 
 WORKDIR /maddy
 
@@ -21,9 +13,6 @@ RUN \
     && ./build.sh --builddir /tmp --destdir /pkg/ build install
 
 FROM docker.io/library/alpine:3.21.3
-ARG TARGETPLATFORM
-ARG VERSION
-ARG CHANNEL
 
 RUN \
     apk add --no-cache \
@@ -36,5 +25,3 @@ COPY --from=builder /pkg/usr/local/bin/maddy /bin/maddy
 
 EXPOSE 25 143 993 587 465
 ENTRYPOINT ["/usr/bin/catatonit", "--", "/bin/maddy", "-config", "/data/maddy.conf"]
-
-LABEL org.opencontainers.image.source="https://github.com/foxcpp/maddy"
