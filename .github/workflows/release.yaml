@@ -3,8 +3,6 @@
 name: Release
 
 on:
-  pull_request:
-    branches: ["main"]
   push:
     branches: ["main"]
     paths: ["apps/**"]
@@ -12,112 +10,76 @@ on:
     inputs:
       app:
         type: string
-        description: The name of the app to build
+        description: Application Name
         required: true
       release:
         type: boolean
-        description: Whether to release the app
+        description: Release
         required: false
         default: false
 
 jobs:
-  pre-job:
-    name: Pre-Job
+  prepare:
+    name: Prepare
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     outputs:
-      any_changed: ${{ steps.changed-dirs.outputs.any_changed }}
-      all_changed_and_modified_files: ${{ steps.changed-dirs.outputs.all_changed_and_modified_files }}
+      changed-files: ${{ steps.changed-files.outputs.changed_files }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
       - name: Get Changed Files
-        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
-        id: changed-dirs
+        id: changed-files
+        uses: bjw-s-labs/action-changed-files@b1144fc772fca235a50902c7bb6cc431cc7d8e27 # v0.3.2
         with:
-          dir_names: true
-          dir_names_max_depth: "1"
           path: apps
+          include_only_directories: true
+          max_depth: 1
 
   changed:
-    if: ${{ needs.pre-job.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch' }}
-    needs: pre-job
+    if: ${{ needs.prepare.outputs.changed-files != '[]' || github.event_name == 'workflow_dispatch' }}
+    needs: ["prepare"]
     name: Get Changed Apps
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     outputs:
       apps: ${{ steps.apps.outputs.apps }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
-      - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-
-      - name: Install required packages
-        run: npm install yaml
-
-      - name: Extract Metadata
+      - name: Get Apps
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         id: apps
+        env:
+          APPS: ${{ github.event_name == 'workflow_dispatch' && inputs.app || join(fromJSON(needs.prepare.outputs.changed-files), ' ') }}
         with:
           script: |
-            const fs = require('fs');
-            const yaml = require('yaml');
-            const cwd = process.cwd();
-
-            const input =
-              context.eventName === 'workflow_dispatch'
-                ? '${{ inputs.app }}'
-                : '${{ needs.pre-job.outputs.all_changed_and_modified_files }}';
-
-            const appsToBuild = input.split(' ').filter(Boolean);
-            const output = [];
-
-            appsToBuild.forEach((app) => {
-              const metadataPath = `${cwd}/apps/${app}/metadata.yaml`;
-
-              if (!fs.existsSync(metadataPath)) {
-                core.setFailed(`App ${app} does not have a metadata.yaml`);
-                process.exit(1);
-              }
-
-              const metadataContent = fs.readFileSync(metadataPath, 'utf8');
-              const metadata = yaml.parse(metadataContent);
-              output.push(metadata);
-            });
-
-            core.setOutput('apps', output);
-            console.log('apps:', JSON.stringify(output, null, 2));
+            const { APPS } = process.env;
+            const appsToBuild = APPS.split(' ').filter(Boolean);
+            core.setOutput('apps', JSON.stringify(appsToBuild));
+            console.log('apps:', JSON.stringify(appsToBuild, null, 2));
             core.summary.addHeading('Apps to build:').addList(appsToBuild).write();
 
   build:
     if: ${{ needs.changed.outputs.apps != '[]' }}
-    needs: changed
-    name: Build ${{ matrix.app.name }}
-    uses: ./.github/workflows/image-build-action.yaml
+    needs: ["changed"]
+    name: Build ${{ matrix.app }}
+    uses: ./.github/workflows/app-builder.yaml
     permissions:
-      contents: read
+      attestations: write
+      contents: write
       id-token: write
       packages: write
+      security-events: write
+    secrets: inherit
     strategy:
       matrix:
         app: ${{ fromJSON(needs.changed.outputs.apps) }}
       fail-fast: false
+      max-parallel: 4
     with:
-      app: ${{ matrix.app.name }}
-      version: ${{ matrix.app.version }}
+      app: ${{ matrix.app }}
       release: ${{ github.event_name == 'workflow_dispatch' && inputs.release || github.event_name == 'push' }}
 
   status:
     if: ${{ !cancelled() }}
-    needs: build
+    needs: ["build"]
     name: Build Success
     runs-on: ubuntu-latest
-    permissions: {}
     steps:
       - name: Any jobs failed?
         if: ${{ contains(needs.*.result, 'failure') }}
