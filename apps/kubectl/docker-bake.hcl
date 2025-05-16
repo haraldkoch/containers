@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=kubernetes/kubernetes
-  default = "v1.33.0"
+  default = "v1.33.1"
 }
 
 variable "SOURCE" {
