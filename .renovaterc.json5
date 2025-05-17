@@ -15,6 +15,16 @@
   ],
   packageRules: [
     {
+      description: ["Release Rules for Application Updates"],
+      addLabels: ["app/{{parentDir}}"],
+      additionalBranchPrefix: "{{parentDir}}-",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
+      commitMessageTopic: "{{depName}}",
+      matchFileNames: ["**/docker-bake.hcl", "**/Dockerfile"],
+      semanticCommitScope: "{{parentDir}}",
+      semanticCommitType: "release",
+    },
+    {
       description: ["Auto-merge Application Updates"],
       matchFileNames: ["**/docker-bake.hcl"],
       automerge: true,
@@ -22,31 +32,20 @@
       ignoreTests: false,
     },
     {
-      description: "Create Individual PRs for Application Base Image Updates",
-      matchDatasources: ["docker"],
-      matchPackageNames: ["/alpine/", "/golang/", "/node/", "/python/", "/ubuntu/"],
-      additionalBranchPrefix: "{{parentDir}}-",
-    },
-    {
-      description: ["Assign Application Labels"],
-      addLabels: ["app/{{parentDir}}"],
-      matchFileNames: ["**/docker-bake.hcl", "**/Dockerfile"],
-    },
-    {
-      description: ["Allowed Ubuntu Version"],
+      description: ["Allowed Ubuntu Version for Base Images"],
       matchDatasources: ["docker"],
       matchPackageNames: ["/ubuntu/"],
       allowedVersions: "/24\\.04/",
     },
     {
-      description: ["Allowed Alpine Version"],
+      description: ["Allowed Alpine Version for Base Images"],
       matchDatasources: ["docker"],
       matchFileNames: ["**/Dockerfile"],
       matchPackageNames: ["/alpine/"],
       allowedVersions: "/3\\.21/",
     },
     {
-      description: ["Allowed Python Version"],
+      description: ["Allowed Python Version for Base Images"],
       matchDatasources: ["docker"],
       matchFileNames: ["**/Dockerfile"],
       matchPackageNames: ["/python/"],
