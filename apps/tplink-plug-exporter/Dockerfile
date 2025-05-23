@@ -15,4 +15,4 @@ RUN \
 COPY --from=builder /go/bin/tplink-plug-exporter /app/tplink-plug-exporter
 
 EXPOSE 9233
-ENTRYPOINT ["/usr/bin/catatonit", "--", "/tplink-plug-exporter"]
+ENTRYPOINT ["/usr/bin/catatonit", "--", "/app/tplink-plug-exporter"]
