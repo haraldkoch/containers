@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.21
+FROM docker.io/library/alpine:3.22.0
 ARG VERSION
 
 #hadolint ignore=DL3018
