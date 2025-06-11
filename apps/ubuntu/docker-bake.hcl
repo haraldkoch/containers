@@ -1,5 +1,9 @@
 target "docker-metadata-action" {}
 
+variable "APP" {
+  default = "ubuntu"
+}
+
 variable "VERSION" {
   // renovate: datasource=docker depName=library/ubuntu versioning=loose
   default = "noble-20250127"
@@ -26,6 +30,7 @@ target "image" {
 target "image-local" {
   inherits = ["image"]
   output = ["type=docker"]
+  tags = ["${APP}:${VERSION}"]
 }
 
 target "image-all" {

@@ -1,5 +1,9 @@
 target "docker-metadata-action" {}
 
+variable "APP" {
+  default = "dmarc-report"
+}
+
 variable "VERSION" {
   // renovate: datasource=docker depName=gutmensch/dmarc-report
   default = "1.4.5"
@@ -26,6 +30,7 @@ target "image" {
 target "image-local" {
   inherits = ["image"]
   output = ["type=docker"]
+  tags = ["${APP}:${VERSION}"]
 }
 
 target "image-all" {
