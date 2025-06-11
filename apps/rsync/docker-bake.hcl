@@ -5,8 +5,8 @@ variable "APP" {
 }
 
 variable "VERSION" {
-  // renovate: datasource=repology depName=alpine_3_21/rsync
-  default = "3.4.0"
+  // renovate: datasource=repology depName=alpine_3_22/rsync
+  default = "3.4.1-r0"
 }
 
 variable "SOURCE" {
