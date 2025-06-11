@@ -1,5 +1,9 @@
 target "docker-metadata-action" {}
 
+variable "APP" {
+  default = "openweathermap-exporter"
+}
+
 variable "VERSION" {
   // renovate: datasource=github-releases depName=haraldkoch/openweathermap-exporter
   default = "0.2.24"
@@ -26,6 +30,7 @@ target "image" {
 target "image-local" {
   inherits = ["image"]
   output = ["type=docker"]
+  tags = ["${APP}:${VERSION}"]
 }
 
 target "image-all" {
