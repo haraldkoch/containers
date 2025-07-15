@@ -5,7 +5,7 @@ ARG VERSION
 ENV CGO_ENABLED=0
 RUN go install -ldflags="-s -w" "github.com/haraldkoch/prometheus-dnssec-exporter@v${VERSION}"
 
-FROM docker.io/library/alpine:3.22.0
+FROM docker.io/library/alpine:3.22.1
 RUN \
     apk add --no-cache \
         bash \
