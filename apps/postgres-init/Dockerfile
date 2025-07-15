@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM docker.io/library/alpine:3.22.0
+FROM docker.io/library/alpine:3.22.1
 ARG VERSION
 USER root
 RUN \
