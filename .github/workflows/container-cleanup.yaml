@@ -34,6 +34,7 @@ jobs:
         include:
           - primary-name: "actions-runner"
           - primary-name: "cloudflared"
+          - primary-name: "dmarc-report"
           - primary-name: "excalidraw"
           - primary-name: "filebrowser"
           - primary-name: "goldpinger"
@@ -49,6 +50,7 @@ jobs:
           - primary-name: "rsync"
           - primary-name: "smartctl_exporter"
           - primary-name: "syncthing"
+          - primary-name: "tplink-plug-exporter"
           - primary-name: "ubuntu"
           - primary-name: "volsync"
           - primary-name: "weather_exporter"
