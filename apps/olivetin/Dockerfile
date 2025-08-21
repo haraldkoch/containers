@@ -21,6 +21,7 @@ ARG HTTPIE_VERSION
 RUN \
     microdnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=install_weak_deps=0 \
       python3-pip \
+      wol \
     && pip install uv \
     && mkdir -p /app \
     && \
