@@ -1,0 +1,9 @@
+---
+schemaVersion: "2.0.0"
+fileExistenceTests:
+  - name: httpie
+    path: /usr/local/bin/http
+    shouldExist: true
+  - name: wol
+    path: /usr/bin/wol
+    shouldExist: true
