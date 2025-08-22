@@ -27,6 +27,7 @@ target "image" {
   inherits = ["docker-metadata-action"]
   args = {
     VERSION = "${VERSION}"
+    HTTPIE_VERSION = "${HTTPIE_VERSION}"
   }
   labels = {
     "org.opencontainers.image.source" = "${SOURCE}"
