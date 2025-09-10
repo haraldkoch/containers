@@ -43,7 +43,7 @@ RUN \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY --from=ghcr.io/fluxcd/flux-cli:v2.6.4 /usr/local/bin/flux /usr/local/bin/flux
-COPY --from=registry.k8s.io/kubectl:v1.34.0 /bin/kubectl /usr/local/bin/kubectl
+COPY --from=registry.k8s.io/kubectl:v1.34.1 /bin/kubectl /usr/local/bin/kubectl
 COPY --from=docker.io/mikefarah/yq:4.47.2 /usr/bin/yq /usr/local/bin/yq
 
 USER runner
