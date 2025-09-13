@@ -1,7 +1,7 @@
 target "docker-metadata-action" {}
 
 variable "VERSION" {
-  // renovate: datasource=github-releases depName=fffionion/tplink-plug-exporter
+  // renovate: datasource=docker depName=fffionion/tplink-plug-exporter
   default = "0.5.0"
 }
 
