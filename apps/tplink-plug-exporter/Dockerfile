@@ -3,7 +3,7 @@
 FROM docker.io/library/golang:1.25-alpine AS builder
 ARG VERSION
 ENV CGO_ENABLED=0
-RUN go install -ldflags="-s -w" "github.com/fffonion/tplink-plug-exporter@v${VERSION}"
+RUN go install -ldflags="-s -w" "docker.io/fffonion/tplink-plug-exporter@v${VERSION}"
 
 FROM docker.io/library/alpine:3.22.1
 RUN \
