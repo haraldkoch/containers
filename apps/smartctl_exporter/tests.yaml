@@ -1,0 +1,6 @@
+---
+schemaVersion: "2.0.0"
+fileExistenceTests:
+  - name: smartctl_exporter
+    path: /bin/smartctl_exporter
+    shouldExist: true

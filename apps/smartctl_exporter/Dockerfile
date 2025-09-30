@@ -1,9 +1,9 @@
-FROM docker.io/library/alpine:3.20
-ARG TARGETPLATFORM
+# syntax=docker/dockerfile:1
+
+FROM docker.io/library/alpine:3.22.1
 ARG TARGETARCH
 ARG TARGETOS
 ARG VERSION
-ARG CHANNEL
 
 RUN \
     apk add --no-cache \
@@ -21,5 +21,3 @@ RUN apk add --no-cache bash catatonit smartmontools \
 
 EXPOSE 9633
 ENTRYPOINT ["/usr/bin/catatonit", "--", "/bin/smartctl_exporter"]
-
-LABEL org.opencontainers.image.source="https://github.com/prometheus-community/smartctl_exporter"
