@@ -44,7 +44,7 @@ RUN \
 
 COPY --from=ghcr.io/fluxcd/flux-cli:v2.7.2 /usr/local/bin/flux /usr/local/bin/flux
 COPY --from=registry.k8s.io/kubectl:v1.34.1 /bin/kubectl /usr/local/bin/kubectl
-COPY --from=docker.io/mikefarah/yq:4.47.2 /usr/bin/yq /usr/local/bin/yq
+COPY --from=docker.io/mikefarah/yq:4.48.1 /usr/bin/yq /usr/local/bin/yq
 
 USER runner
 
