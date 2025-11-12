@@ -14,5 +14,4 @@ func Test(t *testing.T) {
 		Port: "9204",
 		Path: "/metrics",
 	}, nil)
-
 }
