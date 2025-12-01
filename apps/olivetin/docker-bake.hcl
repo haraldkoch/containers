@@ -6,7 +6,7 @@ variable "APP" {
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=OliveTin/OliveTin
-  default = "3000.5.0"
+  default = "3000.6.0"
 }
 
 variable "HTTPIE_VERSION" {
