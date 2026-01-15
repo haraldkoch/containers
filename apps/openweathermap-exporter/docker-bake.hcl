@@ -6,7 +6,7 @@ variable "APP" {
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=haraldkoch/openweathermap-exporter
-  default = "0.2.51"
+  default = "0.2.52"
 }
 
 variable "SOURCE" {
