@@ -12,7 +12,7 @@ RUN \
     && cp maddy.conf.docker /pkg/data/maddy.conf \
     && ./build.sh --builddir /tmp --destdir /pkg/ build install
 
-FROM docker.io/library/alpine:3.23.2
+FROM docker.io/library/alpine:3.23.3
 
 RUN \
     apk add --no-cache \
