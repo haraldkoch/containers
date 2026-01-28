@@ -5,7 +5,7 @@ ARG VERSION
 ENV CGO_ENABLED=0
 RUN go install -ldflags="-s -w" "github.com/haraldkoch/openweathermap-exporter@v${VERSION}"
 
-FROM docker.io/library/alpine:3.23.2
+FROM docker.io/library/alpine:3.23.3
 RUN \
     apk add --no-cache \
         bash \
