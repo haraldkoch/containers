@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=haraldkoch/tplink-plug-exporter
-  default = "0.5.0"
+  default = "0.5.2"
 }
 
 variable "SOURCE" {
