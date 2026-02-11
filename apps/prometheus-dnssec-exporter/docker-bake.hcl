@@ -6,7 +6,7 @@ variable "APP" {
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=haraldkoch/prometheus-dnssec-exporter
-  default = "0.7.32"
+  default = "0.7.33"
 }
 
 variable "SOURCE" {
