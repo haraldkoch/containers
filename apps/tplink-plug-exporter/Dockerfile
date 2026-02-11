@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM docker.io/library/golang:1.25-alpine AS builder
+FROM docker.io/library/golang:1.26-alpine AS builder
 ARG VERSION
 ENV CGO_ENABLED=0
 RUN go install -ldflags="-s -w" "github.com/haraldkoch/tplink-plug-exporter@v${VERSION}"
