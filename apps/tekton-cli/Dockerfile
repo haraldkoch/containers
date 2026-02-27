@@ -3,6 +3,7 @@
 FROM docker.io/library/alpine:3.23
 ARG TARGETARCH
 ARG TKNARCH=${TARGETARCH/amd64/x86_64}
+ARG TKNARCH=${TKNARCH/arm64/aarch64}
 ARG VERSION
 
 USER root
