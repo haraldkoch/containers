@@ -37,6 +37,8 @@ ENV \
 USER root
 
 RUN \
+    groupadd --gid 1000 onek \
+    useradd --uid 1000 --gid 1000 --comment "One Thousand" onek \
     useradd kah \
         --uid 568 \
         --user-group \
