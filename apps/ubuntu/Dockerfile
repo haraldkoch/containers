@@ -66,11 +66,13 @@ RUN \
         coreutils \
         curl \
         dnsutils \
+        git \
         iputils-ping \
         jo \
         jq \
         locales \
         moreutils \
+        openssh-client \
         pv \
         tzdata \
         vim-tiny \
