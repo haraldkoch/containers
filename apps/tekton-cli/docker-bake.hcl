@@ -6,7 +6,7 @@ variable "APP" {
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=tektoncd/cli
-  default = "v0.44.0"
+  default = "v0.44.1"
 }
 
 variable "SOURCE" {
