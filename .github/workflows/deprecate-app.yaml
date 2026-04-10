@@ -40,6 +40,15 @@ jobs:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
 
+      - name: Validate App Directory
+        env:
+          APP: ${{ inputs.app }}
+        run: |-
+          if [[ ! -d "./apps/${APP}" ]]; then
+            echo "::error::App directory './apps/${APP}' does not exist"
+            exit 1
+          fi
+
       - name: Delete App Directory
         env:
           APP: ${{ inputs.app }}
