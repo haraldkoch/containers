@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/haraldkoch/container-images/testhelpers"
+	"github.com/haraldkoch/containers/testhelpers"
 )
 
 func Test(t *testing.T) {
