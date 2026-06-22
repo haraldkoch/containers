@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM docker.io/library/alpine:3.23
+FROM docker.io/library/alpine:3.24
 ARG TARGETARCH
 ARG TKNARCH=${TARGETARCH/amd64/x86_64}
 ARG TKNARCH=${TKNARCH/arm64/aarch64}
