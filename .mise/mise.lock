@@ -166,9 +166,8 @@ checksum = "sha256:f221dab30d0e9d544332f06fbee2c62186c97d864d5cac8482dba34f1e38b
 url = "https://nodejs.org/dist/v26.4.0/node-v26.4.0-linux-x64.tar.gz"
 
 [tools.node."platforms.linux-x64-musl"]
-checksum = "sha256:b1d9ebb2f4bea2058f2d105710d8cffbd1af3c0c5c690b1886ce54df098bea16"
-url = "https://nodejs.org/dist/v26.4.0/node-v26.4.0.tar.gz"
-install = "source"
+checksum = "sha256:554e960f6570bd3d1987f5170d8f2a373a21818581a8d307b697e7839988314a"
+url = "https://unofficial-builds.nodejs.org/download/release/v26.4.0/node-v26.4.0-linux-x64-musl.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
 checksum = "sha256:4f4fbcacf6b1ff1a95deedba7bd7b2d79efecaa53a8ecb0530546dc9063fefbc"
@@ -185,6 +184,38 @@ url = "https://nodejs.org/dist/v26.4.0/node-v26.4.0-win-x64.zip"
 [[tools.oxfmt]]
 version = "0.56.0"
 backend = "npm:oxfmt"
+
+[[tools.regctl]]
+version = "0.11.5"
+backend = "aqua:regclient/regclient/regctl"
+
+[tools.regctl."platforms.linux-arm64"]
+checksum = "sha256:c4cf231e74cda685f1599f3d866b02b03c572e54b79ec8b062f32070b0ba4587"
+url = "https://github.com/regclient/regclient/releases/download/v0.11.5/regctl-linux-arm64"
+
+[tools.regctl."platforms.linux-arm64-musl"]
+checksum = "sha256:c4cf231e74cda685f1599f3d866b02b03c572e54b79ec8b062f32070b0ba4587"
+url = "https://github.com/regclient/regclient/releases/download/v0.11.5/regctl-linux-arm64"
+
+[tools.regctl."platforms.linux-x64"]
+checksum = "sha256:c93aa7638749f5aaac1a8e01787321889c78f0101809bb2880343478d0ba0467"
+url = "https://github.com/regclient/regclient/releases/download/v0.11.5/regctl-linux-amd64"
+
+[tools.regctl."platforms.linux-x64-musl"]
+checksum = "sha256:c93aa7638749f5aaac1a8e01787321889c78f0101809bb2880343478d0ba0467"
+url = "https://github.com/regclient/regclient/releases/download/v0.11.5/regctl-linux-amd64"
+
+[tools.regctl."platforms.macos-arm64"]
+checksum = "sha256:f4d536d64d0c3cc1db7400902175a1c314675991d22e87e15c319501a2676d3f"
+url = "https://github.com/regclient/regclient/releases/download/v0.11.5/regctl-darwin-arm64"
+
+[tools.regctl."platforms.macos-x64"]
+checksum = "sha256:c132fdddda68b9c7584ac19f3b40cd17f71916c2bca8182270ebe65b55198a12"
+url = "https://github.com/regclient/regclient/releases/download/v0.11.5/regctl-darwin-amd64"
+
+[tools.regctl."platforms.windows-x64"]
+checksum = "sha256:9b83975d464e4ee5a9f899a3ead26072ed67e9a8ed0f582897bfad8141b45938"
+url = "https://github.com/regclient/regclient/releases/download/v0.11.5/regctl-windows-amd64.exe"
 
 [[tools.shellcheck]]
 version = "0.11.0"
