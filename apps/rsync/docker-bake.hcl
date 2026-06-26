@@ -5,7 +5,7 @@ variable "APP" {
 }
 
 variable "VERSION" {
-  // renovate: datasource=repology depName=alpine_3_24/rsync
+  // renovate: datasource=repology depName=alpine_3_24/rsync versioning=apk
   default = "3.4.3-r1"
 }
 
