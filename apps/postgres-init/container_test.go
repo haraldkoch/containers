@@ -3,13 +3,13 @@ package main
 import (
 	"testing"
 
-	"github.com/haraldkoch/containers/testhelpers"
+	helpers "github.com/haraldkoch/containers/tests"
 )
 
 func Test(t *testing.T) {
-	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/postgres-init:rolling")
-	testhelpers.RequireFileExists(t, image, "/usr/local/bin/createdb")
-	testhelpers.RequireFileExists(t, image, "/usr/local/bin/createuser")
-	testhelpers.RequireFileExists(t, image, "/usr/local/bin/psql")
-	testhelpers.RequireFileExists(t, image, "/usr/local/bin/pg_isready")
+	image := helpers.GetTestImage("ghcr.io/haraldkoch/postgres-init:rolling")
+	helpers.RequireFileExists(t, image, "/usr/local/bin/createdb")
+	helpers.RequireFileExists(t, image, "/usr/local/bin/createuser")
+	helpers.RequireFileExists(t, image, "/usr/local/bin/psql")
+	helpers.RequireFileExists(t, image, "/usr/local/bin/pg_isready")
 }

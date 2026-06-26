@@ -21,6 +21,10 @@ on:
       DISCORD_WEBHOOK:
         required: false
 
+concurrency:
+  group: app-builder-${{ inputs.app }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
 
@@ -130,10 +134,6 @@ jobs:
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
-
-      - name: Add Include Directory to Build Context
-        run: |
-          rsync -a --ignore-existing --progress ./include/ "./apps/${APP}/"
 
       - name: Build App
         uses: docker/bake-action@6614cfa25eff9a0b2b2697efb0b6159e7680d584 # v7.2.0

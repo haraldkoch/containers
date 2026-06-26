@@ -3,10 +3,10 @@ package main
 import (
 	"testing"
 
-	"github.com/haraldkoch/containers/testhelpers"
+	helpers "github.com/haraldkoch/containers/tests"
 )
 
 func Test(t *testing.T) {
-	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/maddy:rolling")
-	testhelpers.RequireFileExists(t, image, "/bin/maddy")
+	image := helpers.GetTestImage("ghcr.io/haraldkoch/maddy:rolling")
+	helpers.RequireFileExists(t, image, "/bin/maddy")
 }
