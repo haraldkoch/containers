@@ -8,7 +8,7 @@ import (
 
 func Test(t *testing.T) {
 	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/tplink-plug-exporter:rolling")
-	testhelpers.TestHTTPEndpoint(t, image, testhelpers.HTTPTestConfig{
+	testhelpers.RequireHTTPEndpoint(t, image, testhelpers.HTTPTestConfig{
 		Port: "9233",
 		Path: "/metrics",
 	}, nil)
