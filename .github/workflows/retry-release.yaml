@@ -93,7 +93,7 @@ jobs:
         name: Retry Release
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: |- # zizmor: ignore[template-injection]
+        run: |
           gh workflow run release.yaml \
               --repo ${{ github.repository }} \
               -f app=${{ matrix.app }} \
