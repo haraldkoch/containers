@@ -36,5 +36,5 @@ runs:
       env:
         APP: ${{ inputs.app }}
         TEST_IMAGE: ${{ inputs.image }}
-      run: |-
+      run: |
         go test -v ./apps/${APP}/...

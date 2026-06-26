@@ -132,7 +132,7 @@ jobs:
           TAG: ${{ steps.release.outputs.tag }}
           APP: ${{ inputs.app }}
           REASON: ${{ inputs.reason }}
-        run: |-
+        run: |
           cat > release-notes.md <<EOF
           > [!WARNING]
           > An app has been deprecated and will no longer receive updates.

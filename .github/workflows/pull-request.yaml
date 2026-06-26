@@ -96,5 +96,5 @@ jobs:
 
       - name: All jobs passed or skipped?
         if: ${{ !(contains(needs.*.result, 'failure')) }}
-        run: |-
+        run: |
           echo "All jobs passed or skipped" && echo "${{ toJSON(needs.*.result) }}"

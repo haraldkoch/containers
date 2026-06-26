@@ -51,7 +51,7 @@ runs:
         FROM_APP: ${{ inputs.from-app }}
         TO_APP: ${{ inputs.to-app }}
       with:
-        script: |-
+        script: |
           const { execaSync } = require("execa");
           const { filesize } = require("filesize");
           const { markdownTable } = require("markdown-table");
