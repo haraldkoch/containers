@@ -3,14 +3,14 @@ package main
 import (
 	"testing"
 
-	"github.com/haraldkoch/containers/testhelpers"
+	helpers "github.com/haraldkoch/containers/tests"
 )
 
 func Test(t *testing.T) {
-	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/openweathermap-exporter:rolling")
-	testhelpers.RequireFileExists(t, image, "/app/openweathermap-exporter")
+	image := helpers.GetTestImage("ghcr.io/haraldkoch/openweathermap-exporter:rolling")
+	helpers.RequireFileExists(t, image, "/app/openweathermap-exporter")
 
-	// testhelpers.RequireHTTPEndpoint(t, ctx, image, testhelpers.HTTPTestConfig{
+	// helpers.RequireHTTPEndpoint(t, ctx, image, helpers.HTTPTestConfig{
 	// 	Port: "2112",
 	// 	Path: "/metrics",
 	// }, nil)

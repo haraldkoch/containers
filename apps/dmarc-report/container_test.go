@@ -3,10 +3,10 @@ package main
 import (
 	"testing"
 
-	"github.com/haraldkoch/containers/testhelpers"
+	helpers "github.com/haraldkoch/containers/tests"
 )
 
 func Test(t *testing.T) {
-	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/dmarc-report:rolling")
-	testhelpers.RequireFileExists(t, image, "/usr/bin/dmarcts-report-parser.pl")
+	image := helpers.GetTestImage("ghcr.io/haraldkoch/dmarc-report:rolling")
+	helpers.RequireFileExists(t, image, "/usr/bin/dmarcts-report-parser.pl")
 }

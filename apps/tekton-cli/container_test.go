@@ -3,10 +3,10 @@ package main
 import (
 	"testing"
 
-	"github.com/haraldkoch/containers/testhelpers"
+	helpers "github.com/haraldkoch/containers/tests"
 )
 
 func Test(t *testing.T) {
-	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/tekton-cli:rolling")
-	testhelpers.RequireFileExists(t, image, "/app/bin/tkn")
+	image := helpers.GetTestImage("ghcr.io/haraldkoch/tekton-cli:rolling")
+	helpers.RequireFileExists(t, image, "/app/bin/tkn")
 }

@@ -3,12 +3,12 @@ package main
 import (
 	"testing"
 
-	"github.com/haraldkoch/containers/testhelpers"
+	helpers "github.com/haraldkoch/containers/tests"
 )
 
 func Test(t *testing.T) {
-	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/smartctl_exporter:rolling")
-	testhelpers.RequireHTTPEndpoint(t, image, testhelpers.HTTPTestConfig{
+	image := helpers.GetTestImage("ghcr.io/haraldkoch/smartctl_exporter:rolling")
+	helpers.RequireHTTPEndpoint(t, image, helpers.HTTPTestConfig{
 		Port: "9633",
 		Path: "/metrics",
 	}, nil)
