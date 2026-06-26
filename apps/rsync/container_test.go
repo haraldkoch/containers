@@ -8,5 +8,5 @@ import (
 
 func Test(t *testing.T) {
 	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/rsync:rolling")
-	testhelpers.TestFileExists(t, image, "/usr/bin/rsync", nil)
+	testhelpers.RequireFileExists(t, image, "/usr/bin/rsync", nil)
 }

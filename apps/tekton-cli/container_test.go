@@ -8,5 +8,5 @@ import (
 
 func Test(t *testing.T) {
 	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/tekton-cli:rolling")
-	testhelpers.TestFileExists(t, image, "/app/bin/tkn", nil)
+	testhelpers.RequireFileExists(t, image, "/app/bin/tkn", nil)
 }

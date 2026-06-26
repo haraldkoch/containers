@@ -8,7 +8,7 @@ import (
 
 func Test(t *testing.T) {
 	image := testhelpers.GetTestImage("ghcr.io/haraldkoch/olivetin:rolling")
-	testhelpers.TestFileExists(t, image, "/usr/local/bin/http", nil)
-	testhelpers.TestFileExists(t, image, "/usr/bin/wol", nil)
-	testhelpers.TestHTTPEndpoint(t, image, testhelpers.HTTPTestConfig{Port: "1337"}, nil)
+	testhelpers.RequireFileExists(t, image, "/usr/local/bin/http", nil)
+	testhelpers.RequireFileExists(t, image, "/usr/bin/wol", nil)
+	testhelpers.RequireHTTPEndpoint(t, image, testhelpers.HTTPTestConfig{Port: "1337"}, nil)
 }
