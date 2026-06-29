@@ -18,6 +18,7 @@ USER root
 
 ARG HTTPIE_VERSION
 
+# hadolint ignore=DL3041
 RUN \
     microdnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=install_weak_deps=0 \
       python3-pip \

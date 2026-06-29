@@ -12,7 +12,7 @@ ENV GO111MODULE=on \
     GOARM=${TARGETVARIANT} \
     GOPATH=/go
 ENV PATH $GOPATH/bin:$PATH
-#hadolint ignore=DL3018
+#hadolint ignore=DL3018,DL3062
 RUN \
     apk add --no-cache go upx \
     && go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \

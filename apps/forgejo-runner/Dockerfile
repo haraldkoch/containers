@@ -9,10 +9,11 @@ COPY --from=ghcr.io/sigstore/cosign/cosign:v3.1.1 /ko-app/cosign /usr/local/bin/
 COPY --from=ghcr.io/home-operations/flate:0.4.10 /flate /usr/local/bin/flate
 
 # Install recent Python
+# hadolint ignore=DL3009
 RUN \
     add-apt-repository ppa:deadsnakes/ppa \
     && apt-get -qq update \
-    && apt-get -qq install python3.14 python3.14-venv rsync
+    && apt-get -qq install --no-install-recommends python3.14 python3.14-venv rsync
 
 # Install kustomize
 # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize
