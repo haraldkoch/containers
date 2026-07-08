@@ -8,5 +8,6 @@ import (
 
 func Test(t *testing.T) {
 	image := helpers.GetTestImage("ghcr.io/haraldkoch/actions-runner:rolling")
+	helpers.RequireFileExists(t, image, "/usr/local/bin/flux")
 	helpers.RequireFileExists(t, image, "/usr/local/bin/yq")
 }
