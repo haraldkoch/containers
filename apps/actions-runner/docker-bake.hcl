@@ -5,7 +5,7 @@ variable "GIT_SHA" {}
 
 variable "VERSION" {
   // renovate: datasource=docker depName=ghcr.io/actions/actions-runner
-  default = "2.335.1"
+  default = "2.336.0"
 }
 
 group "default" {
