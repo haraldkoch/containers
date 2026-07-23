@@ -42,7 +42,7 @@ RUN \
         && apt-get install -y --no-install-recommends gh \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY --from=ghcr.io/fluxcd/flux-cli:v2.9.2 /usr/local/bin/flux /usr/local/bin/flux
+COPY --from=ghcr.io/fluxcd/flux-cli:v2.9.3 /usr/local/bin/flux /usr/local/bin/flux
 COPY --from=registry.k8s.io/kubectl:v1.36.3 /bin/kubectl /usr/local/bin/kubectl
 
 USER runner
