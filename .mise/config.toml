@@ -1,8 +1,8 @@
 [settings]
 experimental = true
-unix_default_inline_shell_args = "bash -c -o errexit -o pipefail -o nounset"
 
 [tools]
+actionlint = "1.7.12"
 gh = "2.97.0"
 go = "1.26.5"
 hadolint = "2.15.1"
