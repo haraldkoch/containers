@@ -42,19 +42,19 @@ jobs:
           persist-credentials: false
 
       - name: Check For Existing App
-        uses: ./.github/actions/app-exists
+        uses: $/.github/actions/app-exists
         id: app-exists
         with:
           app: ${{ inputs.app }}
 
       - name: Get App Options
-        uses: ./.github/actions/app-options
+        uses: $/.github/actions/app-options
         id: app-options
         with:
           app: ${{ inputs.app }}
 
       - name: Get App Versions
-        uses: ./.github/actions/app-versions
+        uses: $/.github/actions/app-versions
         id: app-versions
         with:
           upstream-version: ${{ steps.app-options.outputs.version }}
@@ -114,7 +114,7 @@ jobs:
             core.setOutput('arch', process.env.PLATFORM.split('/').pop());
 
       - name: Get App Options
-        uses: ./.github/actions/app-options
+        uses: $/.github/actions/app-options
         id: app-options
         with:
           app: ${{ inputs.app }}
@@ -177,7 +177,7 @@ jobs:
 
       - name: Run App Tests
         if: ${{ ! inputs.release }}
-        uses: ./.github/actions/app-tests
+        uses: $/.github/actions/app-tests
         with:
           app: ${{ inputs.app }}
           image: ghcr.io/${{ github.repository_owner }}/${{ inputs.app }}:sandbox
@@ -197,11 +197,6 @@ jobs:
     outputs:
       digest: ${{ steps.digest.outputs.digest }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
       - name: Download Bake Metadata
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
@@ -307,13 +302,13 @@ jobs:
           permission-contents: write
 
       - name: Get App Options
-        uses: ./.github/actions/app-options
+        uses: $/.github/actions/app-options
         id: app-options
         with:
           app: ${{ inputs.app }}
 
       - name: Get Release Tag
-        uses: ./.github/actions/release-tag
+        uses: $/.github/actions/release-tag
         id: release
         with:
           token: ${{ steps.app-token.outputs.token }}
@@ -355,7 +350,7 @@ jobs:
 
       - if: ${{ contains(needs.*.result, 'failure') }}
         name: Get App Options
-        uses: ./.github/actions/app-options
+        uses: $/.github/actions/app-options
         id: app-options
         with:
           app: ${{ inputs.app }}
