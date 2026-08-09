@@ -6,7 +6,7 @@ FROM ghcr.io/catthehacker/ubuntu:act-24.04@sha256:f713414ec6c6f4c352c030005df800
 COPY --from=ghcr.io/fluxcd/flux-cli:v2.9.4 /usr/local/bin/flux /usr/local/bin/flux
 COPY --from=docker.io/alpine/helm:4.1.1 /usr/bin/helm /usr/local/bin/helm
 COPY --from=ghcr.io/sigstore/cosign/cosign:v3.1.3 /ko-app/cosign /usr/local/bin/cosign
-COPY --from=ghcr.io/home-operations/flate:0.4.12 /flate /usr/local/bin/flate
+COPY --from=ghcr.io/home-operations/flate:0.5.0 /flate /usr/local/bin/flate
 
 # Install recent Python
 # hadolint ignore=DL3009
