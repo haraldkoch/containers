@@ -3,7 +3,7 @@ module github.com/haraldkoch/containers
 go 1.26.5
 
 require (
-	github.com/stretchr/testify v1.11.1
+	github.com/stretchr/testify v1.12.0
 	github.com/testcontainers/testcontainers-go v0.44.0
 )
 
