@@ -3,7 +3,7 @@
 FROM ghcr.io/catthehacker/ubuntu:act-24.04@sha256:62d572b92f9f32d3427b6d220ad1f9dca9c7b6ffad37d295425037dbff78abaf
 
 # Install packages from other images
-COPY --from=ghcr.io/fluxcd/flux-cli:v2.9.4 /usr/local/bin/flux /usr/local/bin/flux
+COPY --from=ghcr.io/fluxcd/flux-cli:v2.9.5 /usr/local/bin/flux /usr/local/bin/flux
 COPY --from=docker.io/alpine/helm:4.1.1 /usr/bin/helm /usr/local/bin/helm
 COPY --from=ghcr.io/sigstore/cosign/cosign:v3.1.3 /ko-app/cosign /usr/local/bin/cosign
 COPY --from=ghcr.io/home-operations/flate:0.6.2 /flate /usr/local/bin/flate
