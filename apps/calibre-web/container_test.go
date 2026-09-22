@@ -10,7 +10,7 @@ func Test(t *testing.T) {
 	image := helpers.GetTestImage("ghcr.io/haraldkoch/calibre-web:rolling")
 
 	t.Run("HTTP endpoint test", func(t *testing.T) {
-		helpers.RequireHTTPEndpoint(t, image, testhelpers.HTTPTestConfig{Port: "8083"}, nil)
+		helpers.RequireHTTPEndpoint(t, image, helpers.HTTPTestConfig{Port: "8083"}, nil)
 	})
 
 	t.Run("Check /opt/kepubify/kepubify exists", func(t *testing.T) {
