@@ -1,0 +1,5 @@
+self-hosted-runner:
+  labels:
+    # actionlint v1.7.12 doesn't know about ubuntu-26.04:
+    #    https://github.com/rhysd/actionlint/pull/683
+    - ubuntu-26.04
