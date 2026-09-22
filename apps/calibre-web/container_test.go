@@ -14,10 +14,10 @@ func Test(t *testing.T) {
 	})
 
 	t.Run("Check /opt/kepubify/kepubify exists", func(t *testing.T) {
-		helpers.RequireFileExists(t, image, "/opt/kepubify/kepubify", nil)
+		helpers.RequireFileExists(t, image, "/opt/kepubify/kepubify")
 	})
 
 	t.Run("Check /opt/calibre/ebook-convert exists", func(t *testing.T) {
-		helpers.RequireFileExists(t, image, "/opt/calibre/ebook-convert", nil)
+		helpers.RequireFileExists(t, image, "/opt/calibre/ebook-convert")
 	})
 }
