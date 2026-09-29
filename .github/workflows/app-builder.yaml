@@ -22,7 +22,7 @@ on:
         required: false
 
 concurrency:
-  group: app-builder-${{ inputs.app }}
+  group: ${{ inputs.release && format('app-builder-{0}', inputs.app) || format('app-builder-{0}-{1}', inputs.app, github.run_id) }}
   cancel-in-progress: false
 
 permissions:
