@@ -12,7 +12,6 @@ ENV GO111MODULE=on \
     GOARM=${TARGETVARIANT} \
     GOPATH=/go
 ENV PATH $GOPATH/bin:$PATH
-#hadolint ignore=DL3018,DL3062
 RUN \
     apk add --no-cache go upx \
     && go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
@@ -33,7 +32,6 @@ ENV \
     UMASK="0002" \
     TZ="Etc/UTC"
 
-# hadolint ignore=DL3002
 USER root
 
 RUN \
@@ -49,7 +47,6 @@ RUN \
 
 WORKDIR /app
 
-# hadolint ignore=DL3008,DL3015
 RUN \
     set -eux \
     && echo 'APT::Install-Recommends "false";' >/etc/apt/apt.conf.d/00recommends \

@@ -3,7 +3,6 @@ FROM docker.io/library/alpine:3.24
 ARG TARGETARCH
 ARG VERSION
 
-#hadolint ignore=DL3018
 RUN \
     apk add --no-cache \
         bash \
@@ -12,7 +11,6 @@ RUN \
         curl \
         openssl
 
-#hadolint ignore=DL3018,DL3059
 RUN \
     curl -fsSL -o /usr/local/bin/kubectl "https://dl.k8s.io/release/${VERSION}/bin/linux/${TARGETARCH}/kubectl" \
     && chmod +x /usr/local/bin/kubectl

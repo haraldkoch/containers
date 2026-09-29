@@ -9,7 +9,6 @@ COPY --from=ghcr.io/sigstore/cosign/cosign:v3.1.3 /ko-app/cosign /usr/local/bin/
 COPY --from=ghcr.io/home-operations/flate:0.6.5 /flate /usr/local/bin/flate
 
 # Install recent Python
-# hadolint ignore=DL3009
 RUN \
     add-apt-repository ppa:deadsnakes/ppa \
     && apt-get -qq update \

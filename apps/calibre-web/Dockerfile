@@ -19,7 +19,6 @@ ENV \
 
 USER root
 
-# hadolint ignore=DL3008,DL3015,SC2086
 RUN \
     apk add --no-cache \
         bash \
