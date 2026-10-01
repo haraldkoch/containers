@@ -8,6 +8,9 @@ COPY --from=docker.io/alpine/helm:4.1.1 /usr/bin/helm /usr/local/bin/helm
 COPY --from=ghcr.io/sigstore/cosign/cosign:v3.1.3 /ko-app/cosign /usr/local/bin/cosign
 COPY --from=ghcr.io/home-operations/flate:0.6.5 /flate /usr/local/bin/flate
 
+# droast ignore=DF002
+USER root
+
 # Install recent Python
 RUN \
     add-apt-repository ppa:deadsnakes/ppa \
@@ -29,12 +32,6 @@ RUN \
     && python3.14 -m venv ~/.local/share/pipx-venv \
     && ~/.local/share/pipx-venv/bin/pip install pipx \
     && ln -s ~/.local/share/pipx-venv/bin/pipx ~/.local/bin/pipx
-
-# Install flux-local
-# renovate: datasource=github-releases depName=allenporter/flux-local
-ARG FLUX_LOCAL_VERSION=8.4.0
-RUN \
-    pipx install flux-local==${FLUX_LOCAL_VERSION}
 
 # Cleanup
 RUN \
