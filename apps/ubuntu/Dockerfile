@@ -32,6 +32,7 @@ ENV \
     UMASK="0002" \
     TZ="Etc/UTC"
 
+# droast ignore=DF002
 USER root
 
 RUN \
