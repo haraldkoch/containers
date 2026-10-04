@@ -6,7 +6,7 @@ variable "APP" {
 
 variable "VERSION" {
   // renovate: datasource=github-releases depName=foxcpp/maddy
-  default = "0.9.5"
+  default = "0.9.6"
 }
 
 variable "SOURCE" {
