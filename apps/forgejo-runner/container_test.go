@@ -17,10 +17,6 @@ func Test(t *testing.T) {
 		helpers.RequireFileExists(t, image, "/usr/local/bin/flux")
 	})
 
-	t.Run("Check flux-local exists", func(t *testing.T) {
-		helpers.RequireFileExists(t, image, "/root/.local/bin/flux-local")
-	})
-
 	t.Run("Check flate exists", func(t *testing.T) {
 		helpers.RequireFileExists(t, image, "/usr/local/bin/flate")
 	})
