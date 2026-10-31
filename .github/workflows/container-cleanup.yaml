@@ -59,7 +59,7 @@ jobs:
     steps:
       - name: Clean untagged images
         if: "${{ env.TOKEN != '' }}"
-        uses: stumpylog/image-cleaner-action/untagged@9f582a6be546d93ea5c02c1446d41f8e17673db6 # v0.13.1
+        uses: stumpylog/image-cleaner-action/untagged@9796867b2a7994f0a3b6b1f2e38a6579f502c977 # v0.14.0
         with:
           token: "${{ env.TOKEN }}"
           owner: ${{ github.repository_owner }}
