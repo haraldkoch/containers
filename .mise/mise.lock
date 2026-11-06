@@ -150,6 +150,7 @@ url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-arm64.tar.gz"
 
 [[tools.oxfmt]]
 version = "0.77.0"
+aube = { path = "locks/oxfmt/0.77.0", digest = "sha256:4739d3f16fce0c69c05833ef7722617f51e3e99182d239b0d5c21b35b579738a" }
 backend = "npm:oxfmt"
 specifiers = ["0.77.0"]
 
