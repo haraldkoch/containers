@@ -12,6 +12,8 @@ ENV GO111MODULE=on \
     GOARM=${TARGETVARIANT} \
     GOPATH=/go
 ENV PATH=${GOPATH}/bin:${PATH}
+
+# droast ignore=DF052,DF054 reason="We want latest for these"
 RUN \
     apk add --no-cache go upx \
     && go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
@@ -48,6 +50,7 @@ RUN \
 
 WORKDIR /app
 
+# droast ignore=DF016,DF005
 RUN \
     set -eux \
     && echo 'APT::Install-Recommends "false";' >/etc/apt/apt.conf.d/00recommends \
@@ -98,7 +101,7 @@ RUN \
         /var/cache/apt/* \
         /var/tmp/*
 
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 VOLUME ["/config"]
 COPY ./scripts /scripts
