@@ -11,7 +11,7 @@ ENV GO111MODULE=on \
     GOARCH=${TARGETARCH} \
     GOARM=${TARGETVARIANT} \
     GOPATH=/go
-ENV PATH $GOPATH/bin:$PATH
+ENV PATH=${GOPATH}/bin:${PATH}
 RUN \
     apk add --no-cache go upx \
     && go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
@@ -56,6 +56,8 @@ RUN \
     && echo 'APT::Get::Install-Suggests "false";' >>/etc/apt/apt.conf.d/00recommends \
     && \
     apt-get -qq update \
+    && \
+    apt-get install -y locales \
     && \
     apt-get install -y \
         bash \
