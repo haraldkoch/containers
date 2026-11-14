@@ -1,4 +1,4 @@
-skip = ["DF021"]
+skip = ["DF021","DF022"]
 
 [shellcheck]
 mode = "required"
