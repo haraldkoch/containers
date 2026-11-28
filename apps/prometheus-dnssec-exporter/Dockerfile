@@ -7,7 +7,7 @@ RUN go install -ldflags="-s -w" "github.com/haraldkoch/prometheus-dnssec-exporte
 
 FROM docker.io/library/alpine:3.24
 RUN \
-    apk add --no-cache \
+    apk add --no-cache --upgrade \
         bash \
         ca-certificates \
         catatonit

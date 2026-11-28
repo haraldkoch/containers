@@ -5,7 +5,7 @@ ENV CGO_ENABLED=0
 WORKDIR /maddy
 
 RUN \
-    apk add --no-cache bash ca-certificates curl \
+    apk add --no-cache --upgrade bash ca-certificates curl \
     && curl -fsSL "https://github.com/foxcpp/maddy/archive/refs/tags/v${VERSION}.tar.gz" \
         | tar xzf - --strip-components=1 \
     && mkdir -p /pkg/data \
@@ -15,7 +15,7 @@ RUN \
 FROM docker.io/library/alpine:3.24
 
 RUN \
-    apk add --no-cache \
+    apk add --no-cache --upgrade \
         bash \
         ca-certificates \
         catatonit

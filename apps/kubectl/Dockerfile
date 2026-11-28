@@ -4,7 +4,7 @@ ARG TARGETARCH
 ARG VERSION
 
 RUN \
-    apk add --no-cache \
+    apk add --no-cache --upgrade \
         bash \
         ca-certificates \
         coreutils \

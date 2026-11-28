@@ -13,7 +13,7 @@ ENV GO111MODULE=on \
     GOPATH=/go
 ENV PATH $GOPATH/bin:$PATH
 RUN \
-    apk add --no-cache go upx \
+    apk add --no-cache --upgrade go upx \
     && go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
     && upx /go/bin/envsubst
 
