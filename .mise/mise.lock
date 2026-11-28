@@ -50,51 +50,51 @@ url_api = "https://api.github.com/repos/cli/cli/releases/assets/793445150"
 provenance = "github-attestations"
 
 [[tools."github:immanuwell/dockerfile-roast"]]
-version = "1.7.0"
+version = "1.8.0"
 backend = "github:immanuwell/dockerfile-roast"
-specifiers = ["1.7.0"]
+specifiers = ["1.8.0"]
 
 [tools."github:immanuwell/dockerfile-roast"."platforms.linux-arm64"]
-checksum = "sha256:0800e80d11f668615fc87750f58809b56bedca83ec6d8a539daa56f42da64bc3"
+checksum = "sha256:b16811c7668947d422a025d6f225538f2d870d01b42480efc8a9df3be3c5f9af"
 checksum_source = "mise-versions"
-url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.7.0/droast-linux-arm64"
-url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/539932750"
+url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.8.0/droast-linux-arm64"
+url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/805750153"
 
 [tools."github:immanuwell/dockerfile-roast"."platforms.linux-arm64-musl"]
-checksum = "sha256:0800e80d11f668615fc87750f58809b56bedca83ec6d8a539daa56f42da64bc3"
+checksum = "sha256:b16811c7668947d422a025d6f225538f2d870d01b42480efc8a9df3be3c5f9af"
 checksum_source = "mise-versions"
-url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.7.0/droast-linux-arm64"
-url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/539932750"
+url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.8.0/droast-linux-arm64"
+url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/805750153"
 
 [tools."github:immanuwell/dockerfile-roast"."platforms.linux-x64"]
-checksum = "sha256:cadb963a040ba2e68641af764f794e5d4fb3371bb9b92255fa5027060b08ea6e"
+checksum = "sha256:2ec95f1b296d28fc4d6f0e17143ececc51f4622fe72fa7f6b74dfd1ac5a435e1"
 checksum_source = "mise-versions"
-url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.7.0/droast-linux-x86_64"
-url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/539932746"
+url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.8.0/droast-linux-x86_64"
+url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/805750156"
 
 [tools."github:immanuwell/dockerfile-roast"."platforms.linux-x64-musl"]
-checksum = "sha256:cadb963a040ba2e68641af764f794e5d4fb3371bb9b92255fa5027060b08ea6e"
+checksum = "sha256:2ec95f1b296d28fc4d6f0e17143ececc51f4622fe72fa7f6b74dfd1ac5a435e1"
 checksum_source = "mise-versions"
-url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.7.0/droast-linux-x86_64"
-url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/539932746"
+url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.8.0/droast-linux-x86_64"
+url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/805750156"
 
 [tools."github:immanuwell/dockerfile-roast"."platforms.macos-arm64"]
-checksum = "sha256:5e4fcb77fd1a7eadd56e1df460c51e9a842ae68abaa4c13b23f871ee968c8195"
+checksum = "sha256:abdf125cd5b806b68c6b35736654c621fc766d7f9e2efc2044ae058c7ea07b8b"
 checksum_source = "mise-versions"
-url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.7.0/droast-macos-arm64"
-url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/539932752"
+url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.8.0/droast-macos-arm64"
+url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/805750135"
 
 [tools."github:immanuwell/dockerfile-roast"."platforms.macos-x64"]
-checksum = "sha256:f81ef8ba6c2f00d23d7200da4db229488b6d0747230c4b7ff3636bab5294da89"
+checksum = "sha256:6630de6b2c4c4f9d26dfee7f98e8bcbe70129018ac00e6c27fafebee7d07d58f"
 checksum_source = "mise-versions"
-url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.7.0/droast-macos-x86_64"
-url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/539932751"
+url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.8.0/droast-macos-x86_64"
+url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/805750133"
 
 [tools."github:immanuwell/dockerfile-roast"."platforms.windows-x64"]
-checksum = "sha256:d4bf219ddc588e055fcaad10547a967d683fa7536b78cc96cc6e57ea75ff48c5"
+checksum = "sha256:4c321205ad97d748e5b9f7577be7946c41620d75211b1618a99ac2e7b3c8e9e4"
 checksum_source = "mise-versions"
-url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.7.0/droast-windows-x86_64.exe"
-url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/539932749"
+url = "https://github.com/immanuwell/dockerfile-roast/releases/download/1.8.0/droast-windows-x86_64.exe"
+url_api = "https://api.github.com/repos/immanuwell/dockerfile-roast/releases/assets/805750151"
 
 [[tools."github:oxc-project/oxc"]]
 version = "0.80.0"
