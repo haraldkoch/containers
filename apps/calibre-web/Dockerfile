@@ -20,7 +20,7 @@ ENV \
 USER root
 
 RUN \
-    apk add --no-cache \
+    apk add --no-cache --upgrade \
         bash \
         ca-certificates \
         catatonit \
@@ -33,7 +33,7 @@ RUN \
         libxml2 \
         libxslt \
     && \
-    apk add --no-cache --virtual=.build-deps \
+    apk add --no-cache --upgrade --virtual=.build-deps \
         build-base \
         curl \
         libffi-dev \

@@ -1,7 +1,8 @@
 FROM docker.io/library/alpine:3.24
 ARG VERSION
 
-RUN apk add --no-cache bash ca-certificates catatonit openssh rsync~"${VERSION}" \
+RUN apk add --no-cache --upgrade \
+       bash ca-certificates catatonit openssh rsync~"${VERSION}" \
     && addgroup -g 1000 rsync \
     && adduser -u 1000 -G rsync -s /bin/sh -D rsync
 
