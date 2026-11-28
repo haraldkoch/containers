@@ -1,8 +1,9 @@
 module github.com/haraldkoch/containers
 
-go 1.26.5
+go 1.27.0
 
 require (
+	github.com/moby/moby/client v0.6.3
 	github.com/stretchr/testify v1.12.1
 	github.com/testcontainers/testcontainers-go v0.45.0
 )
